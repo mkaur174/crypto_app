@@ -3,7 +3,7 @@ class CoinsController < ApplicationController
 
   # GET /coins or /coins.json
   def index
-    @coins = Coin.all
+    @coins = Coin.page(params[:page]).per(20)
   end
 
   # GET /coins/1 or /coins/1.json

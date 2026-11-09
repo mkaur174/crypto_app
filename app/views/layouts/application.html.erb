@@ -18,6 +18,12 @@
   </head>
 
   <body>
+    <nav style="background: #f8f9fa; padding: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #dee2e6;">
+      <strong>CryptoApp</strong> |
+      <%= link_to "Home (Coins)", coins_path, style: "margin-right: 15px;" %>
+      <%= link_to "Categories", categories_path, style: "margin-right: 15px;" %>
+      <%= link_to "About", about_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>

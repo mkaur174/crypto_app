@@ -1,0 +1,42 @@
+<%= form_with(model: coin) do |form| %>
+  <% if coin.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>
+
+      <ul>
+        <% coin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :symbol, style: "display: block" %>
+    <%= form.text_field :symbol %>
+  </div>
+
+  <div>
+    <%= form.label :current_price, style: "display: block" %>
+    <%= form.text_field :current_price %>
+  </div>
+
+  <div>
+    <%= form.label :market_cap, style: "display: block" %>
+    <%= form.number_field :market_cap %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, style: "display: block" %>
+    <%= form.text_field :category_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

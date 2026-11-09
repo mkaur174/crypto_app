@@ -12,3 +12,9 @@
   <strong>Category:</strong>
   <%= link_to @coin.category.name, category_path(@coin.category) %>
 </p>
+
+<% if @coin.market_cap.to_i > 1_000_000_000 %>
+  <span class="badge bg-success">Large Cap Coin (> $1B)</span>
+<% else %>
+  <span class="badge bg-secondary">Standard Cap Coin</span>
+<% end %>

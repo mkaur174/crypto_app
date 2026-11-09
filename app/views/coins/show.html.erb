@@ -8,3 +8,7 @@
 
   <%= button_to "Destroy this coin", @coin, method: :delete %>
 </div>
+<p>
+  <strong>Category:</strong>
+  <%= link_to @coin.category.name, category_path(@coin.category) %>
+</p>

@@ -4,6 +4,25 @@
 
 <h1>Coins</h1>
 
+<%= form_with url: coins_path, method: :get, local: true, style: "margin-bottom: 20px;" do %>
+  <div style="display: flex; gap: 10px; align-items: center;">
+    <div>
+      <%= label_tag :query, "Search Coin:" %>
+      <%= text_field_tag :query, params[:query], placeholder: "e.g. Bitcoin" %>
+    </div>
+
+    <div>
+      <%= label_tag :category_id, "Category Filter:" %>
+      <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: "All Categories" %>
+    </div>
+
+    <div>
+      <%= submit_tag "Filter", style: "margin-top: 15px;" %>
+      <%= link_to "Reset", coins_path, style: "margin-left: 10px;" %>
+    </div>
+  </div>
+<% end %>
+
 <div id="coins">
   <% @coins.each do |coin| %>
     <%= render coin %>

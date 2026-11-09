@@ -3,7 +3,20 @@ class CoinsController < ApplicationController
 
   # GET /coins or /coins.json
   def index
-    @coins = Coin.page(params[:page]).per(20)
+    @coins = Coin.all
+
+    # Simple text search (Feature 4.1)
+    if params[:query].present?
+      @coins = @coins.where("name LIKE ? OR symbol LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    end
+
+    # Hierarchical search / filtering by category (Feature 4.2)
+    if params[:category_id].present?
+      @coins = @coins.where(category_id: params[:category_id])
+    end
+
+    @coins = @coins.page(params[:page]).per(20)
+    @categories = Category.all
   end
 
   # GET /coins/1 or /coins/1.json
